@@ -84,9 +84,22 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
-call plug#begin('~/.vim/plugged')
+set runtimepath+=~/.config/vim
+call plug#begin('~/.config/vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vim-easy-align'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'ryanoasis/vim-devicons' " should be last load
 call plug#end()
+
+" Plug nerdtree
+
+" Plug vim-airline
+
+" Plug vim-easy-align
+
+
+" Plug vim-better-whitespace
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
