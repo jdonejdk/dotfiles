@@ -4,8 +4,7 @@
 sudo -s apt update -y
 
 # install package
-sudo -s apt install -y wget gpg zsh vim ranger python3 fzf shellcheck ripgrep \
-	fd-find bat silversearcher-ag ccache build-essential
+sudo -s apt install -y wget gpg zsh vim ranger python3 fzf shellcheck silversearcher-ag ccache build-essential
 
 # use
 chsh -s $(which zsh)
