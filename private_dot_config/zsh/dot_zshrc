@@ -1,0 +1,57 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# alias
+alias cm="chezmoi"
+alias ra="ranger"
+alias vi="nvim"
+alias cm="chezmoi"
+alias reload="source ~/.zshrc"
+alias proxy="export https_proxy=socks5://192.168.8.1:1080"
+alias unproxy="unset https_proxy"
+
+# environment
+source "$HOME/.cargo/env"
+export RANGER_LOAD_DEFAULT_RC=FALSE
+export GOPROXY="https://goproxy.io"
+
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/LLVMEmbeddedToolchainForArm-14.0.0/bin
+export PATH=$PATH:~/.local/gcc-arm-11.2-2022.02-x86_64-arm-none-eabi/bin
+export PATH=$PATH:~/.local/gcc-arm-11.2-2022.02-x86_64-arm-none-linux-gnueabihf/bin
+
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+zinit ice depth=1 atload"!source ~/.config/zsh/p10k-theme.zsh" lucid nocd
+zinit light romkatv/powerlevel10k
+
+unsetopt case_glob
+
+# Plugins
+zinit ice depth=1 wait lucid
+zinit light Aloxaf/fzf-tab
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 $realpath'
+zinit ice depth=1 wait blockf lucid atpull"zinit creinstall -q ."
+zinit light clarketm/zsh-completions
+
+zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit ice depth=1 wait lucid compile"{src/*.zsh,src/strategies/*.zsh}" atload"_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice depth=1 wait"2" lucid light-mode for \
+      {'wfxr/forgit','hlissner/zsh-autopair','MichaelAquilina/zsh-you-should-use'}
