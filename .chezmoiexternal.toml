@@ -2,10 +2,7 @@
   type = "file"
   url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   refreshPeriod = "168h"
-[".config/nvim/autoload/plug.vim"]
-  type = "file"
-  url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+[" .local/share/zinit"]
+  type = "git-repo"
+  url = "https://github.com/zdharma-continuum/zinit.git"
   refreshPeriod = "168h"
-[".config/zsh/zim/zimfw.zsh"]
-  type = "file"
-  url = "https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh"

@@ -32,7 +32,7 @@ function ubuntu_init() {
 }
 
 function arch_init() {
-  local special_package="yay sudo nerd-fonts-fira-code nerd-fonts-victor-mono the_silver_searcher ccache base-devel lsd gnupg"
+  local special_package="yay sudo nerd-fonts-fira-code nerd-fonts-victor-mono the_silver_searcher ccache base-devel lsd gnupg chezmoi"
 
    msg "arch init"
   echo 'Defaults env_reset,timestamp_timeout=-1' | sudo tee -a /etc/sudoers > /dev/null
@@ -53,6 +53,9 @@ function arch_init() {
   sudo pacman -Sy --needed --noconfirm ${common_package}
   sudo systemctl enable sshd
   sudo pacman -Sy --needed --noconfirm ${special_package}
+  echo -e "[user]\n\tname = jdonejdk\n\temail = jdonejdk@protonmail.com" > ~/.gitconfig
+  chezmoi init https://github.com/jdonejdk/dotfiles.git
+  chezmoi apply 
   chsh -s $(which zsh)
 
     # install sway desktop
