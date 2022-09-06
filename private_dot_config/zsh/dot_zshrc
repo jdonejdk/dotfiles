@@ -7,7 +7,7 @@ alias cm="chezmoi"
 alias ra="ranger"
 alias vi="nvim"
 alias cm="chezmoi"
-alias reload="source ~/.zshrc"
+alias reload="source ~/.config/zsh/.zshrc"
 alias proxy="export https_proxy=socks5://192.168.8.1:1080"
 alias unproxy="unset https_proxy"
 

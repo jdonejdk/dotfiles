@@ -32,7 +32,7 @@ function ubuntu_init() {
 }
 
 function arch_init() {
-  local special_package="yay sudo nerd-fonts-fira-code nerd-fonts-victor-mono the_silver_searcher ccache base-devel lsd gnupg chezmoi"
+  local special_package="yay sudo nerd-fonts-fira-code nerd-fonts-victor-mono the_silver_searcher ccache base-devel lsd gnupg chezmoi fzf"
 
    msg "arch init"
   echo 'Defaults env_reset,timestamp_timeout=-1' | sudo tee -a /etc/sudoers > /dev/null
