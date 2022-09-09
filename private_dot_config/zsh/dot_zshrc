@@ -37,3 +37,4 @@ zinit ice depth=1 wait"2" lucid light-mode for \
       {'wfxr/forgit','hlissner/zsh-autopair','MichaelAquilina/zsh-you-should-use'}
 
 source $HOME/.config/zsh/env.zsh
+source $HOME/.config/zsh/machine_specific.zsh
